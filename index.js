@@ -8,7 +8,7 @@ serialNumber(function (err, value) {
   console.log('Serial Number', value);
 });
 
-setInterval(function () {
+function sendStats() {
   serverStats(function () {
     debug('serverStats tick completed');
   });
@@ -16,4 +16,7 @@ setInterval(function () {
   systemStats(function () {
     debug ('systemStats tick completed');
   });
-}, 10000);
+}
+
+sendStats();
+setInterval(sendStats, 60000);
